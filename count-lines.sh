@@ -6,4 +6,8 @@
 # Match lines which are not empty
 # Print newline count
 
-find . -type f -name '*.java' | grep 'src/main' | xargs cat | grep -ve '^[[:blank:]]*$' | wc -l
+find . -type f -name '*.java' \
+    | grep 'src/main' \
+    | xargs cat \
+    | grep -ve '^[[:blank:]]*$' -ve '^/\*' -ve '\*' -ve '//' \
+    | wc -l
